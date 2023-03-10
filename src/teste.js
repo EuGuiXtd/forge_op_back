@@ -1,3 +1,5 @@
 const teste = 'teste';
 
-export default teste;
+const teste2 = 'teste';
+
+export default { teste, teste2 }; 
