@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 module.exports = (req, res, next) => {
     const { user, email, password } = req.body;
-    const regexemail = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.([a-z]+)?$/i;
+    const regexemail = /\S+@\S+\.\S+/;
     if (!user || !email || !password) {
         return res.status(401).json({ message: 'All fields must be placed' });
       }
