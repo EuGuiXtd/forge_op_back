@@ -11,5 +11,6 @@ app.use(cors());
 
 app.get('/', (req, res) => res.status(200).json({ message: 'forge_op_back versão 1.0' }));
 app.post('/register', registerValidation, user.registerUser);
+app.post('/login', user.loginUser);
 
 module.exports = app;
