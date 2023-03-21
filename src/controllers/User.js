@@ -5,13 +5,13 @@ const registerUser = async (req, res) => {
   const { user, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const token = await userService.registerUser(user, email, hashedPassword);
+  const { message, type } = await userService.registerUser(user, email, hashedPassword);
 
-  if (token === null) {
-    return res.status(409).json({ message: 'Email already registered' });
+  if (type) {
+    return res.status(409).json(message);
   }
-
-  return res.status(201).json(token);
+console.log(message);
+  return res.status(201).json(message);
 };
 
 const loginUser = async (req, res) => {

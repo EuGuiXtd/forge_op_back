@@ -7,12 +7,11 @@ const registerUser = async (user, email, password) => {
     where: { email },
   });
   if (users) {
-    return null;
+    return { type: 'error', message: 'Email already registered' };
   }
 
   await User.create({ user, email, password });
-  const token = GenerateToken({ email });
-  return { token };
+  return { message: 'User Created' };
 };
 
 const loginUser = async (email, password) => {
